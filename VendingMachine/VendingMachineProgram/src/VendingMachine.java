@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VendingMachine {
+
+
+
+
     List<VendingItem> itemList; // List of available products to purchase
     public double amountOfMoneyStored; // Change to give back stored in the machine
     private double balanceInserted; // The amount of money inserted by the user

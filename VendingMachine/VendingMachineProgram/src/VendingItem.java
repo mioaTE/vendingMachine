@@ -8,7 +8,8 @@ public class VendingItem implements Transactionable {
     private int quantity = 5;
     private boolean soldOut = false;
 
-    Map<String, String> vendingItems = new HashMap<>();
+//    Map<String, String> vendingItems = new HashMap<>();
+//    vendingItems
 
     // GETTERS
 
@@ -53,7 +54,7 @@ public class VendingItem implements Transactionable {
         this.slotID = slotID;
         this.quantity = 5;
         this.soldOut = false;
-        itemList.add;
+//        itemList.add;
     }
 
     // METHODS
