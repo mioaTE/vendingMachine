@@ -1,5 +1,7 @@
-public class Cat extends VendingItem{
+package com.techelevator;
 
+
+public class Penguin extends VendingItem {
     private String type;
 
 
@@ -12,7 +14,7 @@ public class Cat extends VendingItem{
     }
 
     // constructors
-    public Cat (String name, double price, String slotId, String type){
+    public Penguin (String name, double price, String slotId, String type){
         super(name, price, slotId);
         this.type = type;
     }

@@ -1,7 +1,9 @@
-public class Duck extends VendingItem{
-    // properties
-    private String type;
+package com.techelevator;
 
+
+public class Cat extends VendingItem{
+
+    private String type;
 
 
     // getters and setters
@@ -13,7 +15,7 @@ public class Duck extends VendingItem{
     }
 
     // constructors
-    public Duck (String name, double price, String slotId, String type){
+    public Cat (String name, double price, String slotId, String type){
         super(name, price, slotId);
         this.type = type;
     }
