@@ -24,10 +24,10 @@ public class Main {
 
             if (choice == 1) {
                 // Display the vending machine items
-                VendingMachine.displayItems();
+//                VendingMachine.displayItems();
             } else if (choice == 2) {
                 // Initiate the purchase process by creating a PurchaseMenu object
-                vendingItems.addItems(); // Add items to Map "vendingItems"
+//                vendingItems.addItems(); // Add items to Map "vendingItems"
             } else if (choice == 3) {
                 // Exit the program
                 System.out.println("\nThank you for using Vendo-Matic 800. Have a great day!");

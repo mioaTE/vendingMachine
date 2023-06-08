@@ -1,2 +1,2 @@
-public class TransactionLog implements Transactionable {
+public class TransactionLog  {
 }

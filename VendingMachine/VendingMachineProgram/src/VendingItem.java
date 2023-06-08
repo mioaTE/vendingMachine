@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class VendingItem implements Transactionable {
+public abstract class VendingItem  {
     private String name;
     private double price;
     private String slotID;
