@@ -3,6 +3,7 @@ package com.techelevator;
 
 import jdk.swing.interop.SwingInterOpUtils;
 
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         SlotID slotID = new SlotID();
         List<VendingItem> itemList = slotID.makeList();
         VendingMachine vendingMachine = new VendingMachine();
@@ -55,10 +56,12 @@ public class Main {
                     choice = userInput.nextLine();
 
                     if (choice.equals("1")) {
+                        //TODO FIX NULL POINTER WHEN TRYING TO RUN LOGS.ADDITEM
                         vendingMachine.FeedMoney();
                         System.out.println(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
-                        logs.addItem(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
-                        System.out.println(logs);
+                        String Line = LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0";
+                        logs.addItem(Line);
+                        logs.makeFile();
                     } else if (choice.equals("2")) {
                         System.out.print("Choose item: ");
                         String itemPicked = userInput.nextLine();
@@ -122,4 +125,5 @@ public class Main {
         }
     }
 }
+//TODO ADD UNIT TESTING
 

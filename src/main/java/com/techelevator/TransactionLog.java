@@ -30,8 +30,8 @@ public class TransactionLog {
     }
     //METHODS
 
-    public void addItem(String log){
-        logs.add(log);
+    public void addItem(String Logs){
+        logs.add(Logs);
     }
     public void makeFile() throws FileNotFoundException {
 
