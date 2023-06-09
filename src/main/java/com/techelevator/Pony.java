@@ -2,20 +2,19 @@ package com.techelevator;
 
 public class Pony extends VendingItem{
 
-    private String type;
+    private String sound;
 
-
-    // getters and setters
-    public String getType() {
-        return type;
-    }
-    public void setType(String type){
-        this.type = type;
+    public String getSound(){
+        return sound;
     }
 
     // constructors
     public Pony (String slotLocation, String animalName, double price, String animalType){
         super(slotLocation, animalName, price   ,animalType);
-        this.type = type;
+        this.sound = "Neigh, Neigh, Yay!";
+    }
+    public void dispense(){
+        this.setQuantity(this.getQuantity() - 1);
+        System.out.println(this.getSound());
     }
 }

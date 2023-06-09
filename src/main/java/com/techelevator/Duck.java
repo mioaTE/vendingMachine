@@ -3,22 +3,26 @@ package com.techelevator;
 
 public class Duck extends VendingItem{
     // properties
-    private String type;
+
+    private String sound;
 
 
 
     // getters and setters
-    public String getType() {
-        return type;
-    }
-    public void setType(String type){
-        this.type = type;
+
+    public String getSound(){
+        return sound;
     }
 
+
     // constructors
-    //TODO SPLIT INPUTPLIST PARSE DOUBLE AND CREATE DUCK
     public Duck (String slotLocation, String animalName, double price, String animalType){
         super(slotLocation, animalName, price   ,animalType);
-        this.type = type;
+        this.sound = "Quack, Quack, Splash!";
+
+    }
+    public void dispense(){
+        this.setQuantity(this.getQuantity() - 1);
+        System.out.println(this.getSound());
     }
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 public abstract class VendingItem  {
     private String name;
     private double price;
+    private String sound;
     private String slotID;
     private int quantity = 5;
     private boolean soldOut = false;
@@ -65,5 +66,11 @@ public abstract class VendingItem  {
     @Override
     public String toString(){
         return slotID + " " + name + " | " + price + " | " + quantity;
+    }
+
+
+    public void dispense(){
+        quantity = this.quantity -1;
+
     }
 }
