@@ -4,7 +4,11 @@ package com.techelevator;
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
+import java.time.LocalDateTime;
 
 public class Main {
 
@@ -12,8 +16,9 @@ public class Main {
         SlotID slotID = new SlotID();
         List<VendingItem> itemList = slotID.makeList();
         VendingMachine vendingMachine = new VendingMachine();
+        TransactionLog logs = new TransactionLog();
 
-        //displayMainMenu();
+
         boolean exit = false; // Initializes the exit variable to false to control the loop
         Scanner userInput = new Scanner(System.in);
 
@@ -27,7 +32,6 @@ public class Main {
             System.out.print("\nPlease enter your choice: ");
             Scanner scanner = new Scanner(System.in);
             String choice = userInput.nextLine();
-//            System.out.println(choice); (test)
             scanner.nextLine(); // Consume the newline character after reading the choice
 
 
@@ -37,16 +41,12 @@ public class Main {
                     System.out.println(item);
                 }
 
-                //TODO purchase itmes menu
-                //TODO pick choice
-                //TODO give change if needed
-                //TODO give items
-
-
             } else if (choice.equals("2") ) {
                 boolean menu2Exit = false;
                 while(!menu2Exit) {
-                    //TODO add another menu 1, 2, 3
+                    System.out.println();
+                    System.out.println("Current Balance: " + vendingMachine.getBalanceInserted());
+                    System.out.println();
                     System.out.println("(1) Feed Money");
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish Transaction");
@@ -56,24 +56,30 @@ public class Main {
 
                     if (choice.equals("1")) {
                         vendingMachine.FeedMoney();
-                        System.out.println("current balance is: " + vendingMachine.getBalanceInserted());
-
+                        System.out.println(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
+                        logs.addItem(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
+                        System.out.println(logs);
                     } else if (choice.equals("2")) {
                         System.out.print("Choose item: ");
                         String itemPicked = userInput.nextLine();
                         for (VendingItem item : itemList) {
                             if (item.getSlotID().equals(itemPicked)) {
                                 if (item.getPrice() <= vendingMachine.getBalanceInserted()) {
+                                    if(item.getQuantity() == 0){
+                                        System.out.println("this item is SOLD OUT.");
+                                    } else {
                                     double balance = vendingMachine.getBalanceInserted();
                                     balance = vendingMachine.getBalanceInserted() - item.getPrice();
                                     BigDecimal.valueOf(balance);
                                     vendingMachine.setBalanceInserted(balance);
                                     System.out.println();
-                                    System.out.println("You have purchased a: " + item.getName() + " for the price of: $" + item.getPrice());
-                                    System.out.println();
-                                    item.dispense();
-                                    System.out.println("there are " + item.getQuantity() + " " + item.getName() + " left!");
-                                    System.out.println("Balance left: $" + balance);
+
+                                        System.out.println("You have purchased a: " + item.getName() + " for the price of: $" + item.getPrice());
+                                        System.out.println();
+                                        item.dispense();
+                                        System.out.println("there are " + item.getQuantity() + " " + item.getName() + " left!");
+                                        System.out.println("Balance left: $" + balance);
+                                    }
                                 }
 
                             }
@@ -96,9 +102,9 @@ public class Main {
                                 balance -= 0.05;
                                 nickles++;
                             }
-                            // TODO Fix change
 
-                        } while (balance > 0);
+
+                        } while (balance > 0.05);
                         System.out.println("Dont forget your change! " + "Quarters: " + quarters + " Dimes: " + dimes + " Nickels: " + nickles);
 
                     }

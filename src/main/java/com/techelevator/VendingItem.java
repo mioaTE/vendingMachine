@@ -11,8 +11,6 @@ public abstract class VendingItem  {
     private int quantity = 5;
     private boolean soldOut = false;
 
-//    Map<String, String> vendingItems = new HashMap<>();
-//    vendingItems
 
     // GETTERS
 
