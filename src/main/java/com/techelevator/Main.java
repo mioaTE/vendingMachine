@@ -37,7 +37,6 @@ public class Main {
 
 
             if (choice.equals("1")) {
-                // TODO Display the vending machine items
                 for(VendingItem item : itemList){
                     System.out.println(item);
                 }
@@ -52,18 +51,21 @@ public class Main {
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish Transaction");
 
-                    System.out.print("\nPlease enter your choice: ");
+                    System.out.print("\nPlease enter your choice: \n");
                     choice = userInput.nextLine();
 
                     if (choice.equals("1")) {
                         //TODO FIX NULL POINTER WHEN TRYING TO RUN LOGS.ADDITEM
                         vendingMachine.FeedMoney();
-                        System.out.println(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
+                        //System.out.println(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
                         String Line = LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0";
-                        logs.addItem(Line);
-                        logs.makeFile();
+                       //TODO MAKE WORK logs.addItem(Line);
+                        //TODO MAKE WORK logs.makeFile();
                     } else if (choice.equals("2")) {
-                        System.out.print("Choose item: ");
+                        for(VendingItem item : itemList) {
+                            System.out.println(item);
+                        }
+                        System.out.print("Choose item: \n");
                         String itemPicked = userInput.nextLine();
                         for (VendingItem item : itemList) {
                             if (item.getSlotID().equals(itemPicked)) {
@@ -108,7 +110,9 @@ public class Main {
 
 
                         } while (balance > 0.05);
-                        System.out.println("Dont forget your change! " + "Quarters: " + quarters + " Dimes: " + dimes + " Nickels: " + nickles);
+                        System.out.println("Don't forget your change! " + "Quarters: " + quarters + "\\|" +" Dimes: " + dimes + "\\|" + " Nickels: " + nickles);
+                        System.out.println();
+                        menu2Exit = true;
 
                     }
                 }
