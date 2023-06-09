@@ -14,8 +14,8 @@ public class Pony extends VendingItem{
     }
 
     // constructors
-    public Pony (String name, double price, String slotId, String type){
-        super(name, price, slotId);
+    public Pony (String slotLocation, String animalName, double price, String animalType){
+        super(slotLocation, animalName, price   ,animalType);
         this.type = type;
     }
 }

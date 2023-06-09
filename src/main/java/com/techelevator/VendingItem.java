@@ -50,7 +50,7 @@ public abstract class VendingItem  {
     }
 
     // CONSTRUCTOR
-    public VendingItem(String name, double price, String slotID){
+    public VendingItem(String slotID,String name,double price,String type){
         this.name = name;
         this.price = price;
         this.slotID = slotID;
@@ -62,5 +62,8 @@ public abstract class VendingItem  {
     // METHODS
 
 
-
+    @Override
+    public String toString(){
+        return slotID + " " + name + " | " + price + " | " + quantity;
+    }
 }

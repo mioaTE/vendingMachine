@@ -15,8 +15,8 @@ public class Cat extends VendingItem{
     }
 
     // constructors
-    public Cat (String name, double price, String slotId, String type){
-        super(name, price, slotId);
+    public Cat (String slotLocation, String animalName, double price, String animalType){
+        super(slotLocation, animalName, price   ,animalType);
         this.type = type;
     }
 }

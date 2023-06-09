@@ -14,8 +14,8 @@ public class Penguin extends VendingItem {
     }
 
     // constructors
-    public Penguin (String name, double price, String slotId, String type){
-        super(name, price, slotId);
+    public Penguin (String slotLocation, String animalName, double price, String animalType){
+        super(slotLocation, animalName, price   ,animalType);
         this.type = type;
     }
 }

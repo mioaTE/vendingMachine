@@ -16,8 +16,9 @@ public class Duck extends VendingItem{
     }
 
     // constructors
-    public Duck (String name, double price, String slotId, String type){
-        super(name, price, slotId);
+    //TODO SPLIT INPUTPLIST PARSE DOUBLE AND CREATE DUCK
+    public Duck (String slotLocation, String animalName, double price, String animalType){
+        super(slotLocation, animalName, price   ,animalType);
         this.type = type;
     }
 }
