@@ -4,14 +4,16 @@ import javax.swing.table.TableStringConverter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+        //TODO ADD LOGS FOR DISPENSING STUFFED ANIMALS AND FOR GIVING CHANGE
 public class TransactionLog {
     //PROPERTIES
 
 
-    List<String> logs;
+    List<String> logs = new ArrayList<>();
 
     //GETTERS AND SETTERS
 
@@ -30,8 +32,8 @@ public class TransactionLog {
     }
     //METHODS
 
-    public void addItem(String Logs){
-        logs.add(Logs);
+    public void addItem(String logs){
+        this.logs.add(LocalDateTime.now() + " " + logs);
     }
     public void makeFile() throws FileNotFoundException {
 
@@ -39,10 +41,14 @@ public class TransactionLog {
         File file = new File(path);
 
         try (PrintWriter writer = new PrintWriter(file)) {
-            while(file.canWrite()){
+            if(file.exists()){
+                file.delete();
+            }
+            boolean run = true;
+            while(run){
                 for(String log : logs){
                     writer.println(log);
-                }
+                } run = false;
             }
         }
 

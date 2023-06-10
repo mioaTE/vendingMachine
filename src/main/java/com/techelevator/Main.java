@@ -4,6 +4,7 @@ package com.techelevator;
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.FileNotFoundException;
+import java.lang.ref.Cleaner;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,8 +13,10 @@ import java.util.*;
 import java.time.LocalDateTime;
 
 public class Main {
+    public static boolean run = true;
 
     public static void main(String[] args) throws FileNotFoundException {
+
         SlotID slotID = new SlotID();
         List<VendingItem> itemList = slotID.makeList();
         VendingMachine vendingMachine = new VendingMachine();
@@ -24,7 +27,14 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         while (!exit) { // Starts a loop that continues until the user chooses to exit
-            System.out.println("Welcome to the Vendo-Matic 800!\n");
+            System.out.println("*************************");
+            System.out.println("**********WELCOME********");
+            System.out.println("************TO***********");
+            System.out.println("***********THE***********");
+            System.out.println("*******VENDO-MATIC*******");
+            System.out.println("*************************");
+            System.out.println();
+            System.out.println();
             System.out.println("Main Menu:");
             System.out.println("(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
@@ -37,15 +47,25 @@ public class Main {
 
 
             if (choice.equals("1")) {
-                for(VendingItem item : itemList){
-                    System.out.println(item);
+                while (run){
+                    for (VendingItem item : itemList) {
+                        System.out.println(item);
+                        }
+                    System.out.println();
+                    System.out.println("Enter (1) to exit: ");
+                    String userDecides = userInput.nextLine();
+                    if(userDecides.equals("1")){
+                        run = false;
+                    }
                 }
 
             } else if (choice.equals("2") ) {
                 boolean menu2Exit = false;
                 while(!menu2Exit) {
                     System.out.println();
-                    System.out.println("Current Balance: " + vendingMachine.getBalanceInserted());
+                    System.out.println("*************************");
+                    System.out.println("* Current Balance: " + "$" + vendingMachine.getBalanceInserted() + "0 *");
+                    System.out.println("*************************");
                     System.out.println();
                     System.out.println("(1) Feed Money");
                     System.out.println("(2) Select Product");
@@ -55,18 +75,27 @@ public class Main {
                     choice = userInput.nextLine();
 
                     if (choice.equals("1")) {
+                        if(vendingMachine.getBalanceInserted() > 9) {
+                            System.out.println("Sorry you can only put in 10 dollars.");
+                            continue;
+                        }
                         //TODO FIX NULL POINTER WHEN TRYING TO RUN LOGS.ADDITEM
                         vendingMachine.FeedMoney();
-                        //System.out.println(LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0");
-                        String Line = LocalDateTime.now() + " FEED MONEY: " + "$1.00 " + "$" + vendingMachine.getBalanceInserted() + "0";
-                       //TODO MAKE WORK logs.addItem(Line);
-                        //TODO MAKE WORK logs.makeFile();
+                        double balance = vendingMachine.getBalanceInserted();
+                        String feedMoney = " $1.00 " + "$" + balance + "0";
+                      logs.addItem(feedMoney);
+                      logs.makeFile();
                     } else if (choice.equals("2")) {
                         for(VendingItem item : itemList) {
                             System.out.println(item);
                         }
+                        System.out.println();
+                        System.out.println("1.) Exit.");
                         System.out.print("Choose item: \n");
                         String itemPicked = userInput.nextLine();
+                        if(itemPicked.equals("1")){
+                            run = false;
+                        }
                         for (VendingItem item : itemList) {
                             if (item.getSlotID().equals(itemPicked)) {
                                 if (item.getPrice() <= vendingMachine.getBalanceInserted()) {
@@ -84,6 +113,10 @@ public class Main {
                                         item.dispense();
                                         System.out.println("there are " + item.getQuantity() + " " + item.getName() + " left!");
                                         System.out.println("Balance left: $" + balance);
+                                        double newBalance = vendingMachine.getBalanceInserted() - item.getPrice();
+                                        String dispenseStuffy = item.getName() + " " + item.getSlotID() + " " + vendingMachine.getBalanceInserted() + " " + newBalance;
+                                        logs.addItem(dispenseStuffy);
+                                        logs.makeFile();
                                     }
                                 }
 
@@ -127,7 +160,9 @@ public class Main {
                 System.out.println("\nInvalid choice. Please try again.\n");
             }
         }
+
     }
+
 }
 //TODO ADD UNIT TESTING
 
