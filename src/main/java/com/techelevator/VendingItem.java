@@ -11,6 +11,8 @@ public abstract class VendingItem  {
     private int quantity = 5;
     private boolean soldOut = false;
 
+    private String animalType;
+
 
     // GETTERS
 
@@ -28,6 +30,10 @@ public abstract class VendingItem  {
     }
     public boolean isSoldOut(){
         return soldOut;
+    }
+
+    public String getAnimalType(){
+        return animalType;
     }
 
     // SETTERS
@@ -49,12 +55,13 @@ public abstract class VendingItem  {
     }
 
     // CONSTRUCTOR
-    public VendingItem(String slotID,String name,double price,String type){
+    public VendingItem(String slotID,String name,double price,String animalType){
         this.name = name;
         this.price = price;
         this.slotID = slotID;
         this.quantity = 5;
         this.soldOut = false;
+        this.animalType = animalType;
 //        itemList.add;
     }
 
