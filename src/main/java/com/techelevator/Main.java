@@ -143,7 +143,11 @@ public class Main {
 
 
                         } while (balance > 0.05);
-                        System.out.println("Don't forget your change! " + "Quarters: " + quarters + "\\|" +" Dimes: " + dimes + "\\|" + " Nickels: " + nickles);
+                        System.out.println("Don't forget your change! " + "Quarters: " + quarters + " " +" Dimes: " + dimes + " " + " Nickels: " + nickles);
+                        String change = "GIVE CHANGE $" + vendingMachine.getBalanceInserted() + " $0.00";
+                        logs.addItem(change);
+                        logs.makeFile();
+                        vendingMachine.setBalanceInserted(0.0);
                         System.out.println();
                         menu2Exit = true;
 
