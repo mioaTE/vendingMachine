@@ -1,4 +1,5 @@
-import com.techelevator.VendingMachine;
+package com.techelevator;
+
 import org.junit.jupiter.api.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

@@ -1,3 +1,5 @@
+package com.techelevator;
+
 import com.techelevator.Cat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
