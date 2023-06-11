@@ -27,13 +27,12 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         while (!exit) { // Starts a loop that continues until the user chooses to exit
-            System.out.println("*************************");
+
             System.out.println("**********WELCOME********");
             System.out.println("************TO***********");
             System.out.println("***********THE***********");
             System.out.println("*******VENDO-MATIC*******");
-            System.out.println("*************************");
-            System.out.println();
+
             System.out.println();
             System.out.println("Main Menu:");
             System.out.println("(1) Display Vending Machine Items");
@@ -65,6 +64,7 @@ public class Main {
                     System.out.println();
                     System.out.println("*************************");
                     System.out.println("* Current Balance: " + "$" + vendingMachine.getBalanceInserted() + "0 *");
+                    //TODO getBalanceInserted +0 or not
                     System.out.println("*************************");
                     System.out.println();
                     System.out.println("(1) Feed Money");
@@ -114,7 +114,7 @@ public class Main {
                                         System.out.println("there are " + item.getQuantity() + " " + item.getName() + " left!");
                                         System.out.println("Balance left: $" + balance);
                                         double newBalance = vendingMachine.getBalanceInserted() - item.getPrice();
-                                        String dispenseStuffy = item.getName() + " " + item.getSlotID() + " " + vendingMachine.getBalanceInserted() + " " + newBalance;
+                                        String dispenseStuffy = item.getName() + " " + item.getSlotID() + " $" + vendingMachine.getBalanceInserted() + " $" + newBalance;
                                         logs.addItem(dispenseStuffy);
                                         logs.makeFile();
                                     }
@@ -157,7 +157,7 @@ public class Main {
                 exit = true;
             } else {
                 // Invalid choice entered
-                System.out.println("\nInvalid choice. Please try again.\n");
+                System.out.println("\n***Invalid choice. Please try again.***\n");
             }
         }
 

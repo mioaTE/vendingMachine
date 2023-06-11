@@ -63,7 +63,7 @@ public abstract class VendingItem  {
 
     @Override
     public String toString(){
-        return "Slot number: " + slotID + " | " + name + " Stuffy." + " | " + "Price: " + price + " | " + "Quantity: " + quantity;
+        return "Slot number: " + slotID + " | " + name + " Stuffy." + " | " + "Price: $" + price + " | " + "Quantity: " + quantity;
     }
 
 
