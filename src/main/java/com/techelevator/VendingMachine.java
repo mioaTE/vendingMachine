@@ -13,7 +13,6 @@ public class VendingMachine {
 
 
     private double balanceInserted;
-    private double maxMoney;
 
     // getters and setters
     public double getBalanceInserted(){
@@ -23,17 +22,11 @@ public class VendingMachine {
         this.balanceInserted = balanceInserted;
     }
 
-    public double getMaxMoney(){
-        return maxMoney;
-    }
 
-    public void setMaxMoney(double maxMoney){
-        this.maxMoney = maxMoney;
-    }
-    // contructor
+    // cons1
+    // tructor
     public VendingMachine()  {
         balanceInserted = 0.0;
-        maxMoney = 100.0;
     }
 
    // method

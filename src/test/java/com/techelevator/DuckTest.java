@@ -21,54 +21,52 @@ public class DuckTest {
         // assert
         Assert.assertEquals("This is not the correct sound for duck is ", sound, result);
     }
-    @org.junit.jupiter.api.Test
-    @DisplayName("Test Cat dispense method")
-    public void test_cat_dispense_works() {
+    @Test
+    public void test_duck_dispense_works() {
         // Arrange
-        Cat cat = new Cat("A1", "Fluffy", 1.50, "Domestic");
-        int initialQuantity = cat.getQuantity();
+        Duck duck = new Duck("A1", "Daphie", 1.50, "Duck");
+        int initialQuantity = duck.getQuantity();
 
         // Act
-        cat.dispense();
-        int remainingQuantity = cat.getQuantity();
+        duck.dispense();
+        int remainingQuantity = duck.getQuantity();
 
         // Assert
         assertEquals(initialQuantity - 1, remainingQuantity);
     }
 
-    @org.junit.jupiter.api.Test
-    @DisplayName("Test Cat getSound method")
-    public void test_cat_get_sound() {
+    @Test
+    public void test_duck_get_sound() {
         // Arrange
-        Cat cat = new Cat("A1", "Fluffy", 1.50, "Domestic");
-        String expectedSound = "Meow, Meow, Meow!";
+        Duck duck = new Duck("A1", "Daphie", 1.50, "Duck");
+        String expectedSound = "Quack, Quack, Splash!";
 
         // Act
-        String actualSound = cat.getSound();
+        String actualSound = duck.getSound();
 
         // Assert
         assertEquals(expectedSound, actualSound);
     }
 
-    @org.junit.jupiter.api.Test
-    @DisplayName("Test Cat constructor")
-    public void test_cat_constructor() {
+    @Test
+    public void test_duck_constructor() {
         // Arrange
         String slotLocation = "A1";
-        String animalName = "Fluffy";
+        String animalName = "Daphie";
         double price = 1.50;
-        String animalType = "Domestic";
-        String expectedSound = "Meow, Meow, Meow!";
+        String animalType = "Duck";
+        String expectedSound = "Quack, Quack, Splash!";
 
         // Act
-        Duck duck = new Duck();
-        String actualSound = cat.getSound();
+        Duck duck = new Duck(slotLocation, animalName, price, animalType);
+        String actualSound = duck.getSound();
 
         // Assert
         assertEquals(slotLocation, duck.getSlotID());
-        assertEquals(animalName, cat.getName());
-        assertEquals(price, cat.getPrice());
-        assertEquals(animalType, cat.getAnimalType());
+        assertEquals(animalName, duck.getName());
+        assertEquals(price, duck.getPrice());
+        assertEquals(animalType, duck.getAnimalType());
         assertEquals(expectedSound, actualSound);
     }
+
 }
