@@ -9,7 +9,7 @@ public class CatTest {
 
     @Test
     @DisplayName("Test Cat dispense method")
-    public void testCatDispense() {
+    public void test_cat_dispense_works() {
         // Arrange
         Cat cat = new Cat("A1", "Fluffy", 1.50, "Domestic");
         int initialQuantity = cat.getQuantity();
@@ -24,7 +24,7 @@ public class CatTest {
 
     @Test
     @DisplayName("Test Cat getSound method")
-    public void testCatGetSound() {
+    public void test_cat_get_sound() {
         // Arrange
         Cat cat = new Cat("A1", "Fluffy", 1.50, "Domestic");
         String expectedSound = "Meow, Meow, Meow!";
@@ -38,7 +38,7 @@ public class CatTest {
 
     @Test
     @DisplayName("Test Cat constructor")
-    public void testCatConstructor() {
+    public void test_cat_constructor() {
         // Arrange
         String slotLocation = "A1";
         String animalName = "Fluffy";
@@ -51,8 +51,8 @@ public class CatTest {
         String actualSound = cat.getSound();
 
         // Assert
-        assertEquals(slotLocation, cat.getSlotLocation());
-        assertEquals(animalName, cat.getAnimalName());
+        assertEquals(slotLocation, cat.getSlotID());
+        assertEquals(animalName, cat.getName());
         assertEquals(price, cat.getPrice());
         assertEquals(animalType, cat.getAnimalType());
         assertEquals(expectedSound, actualSound);

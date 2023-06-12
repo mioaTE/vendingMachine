@@ -50,8 +50,8 @@ public class PenguinTest {
         String actualSound = penguin.getSound();
 
         // Assert
-        assertEquals(slotLocation, penguin.getSlotLocation());
-        assertEquals(animalName, penguin.getAnimalName());
+        assertEquals(slotLocation, penguin.getSlotID());
+        assertEquals(animalName, penguin.getName());
         assertEquals(price, penguin.getPrice());
         assertEquals(animalType, penguin.getAnimalType());
         assertEquals(expectedSound, actualSound);
